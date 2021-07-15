@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+            
+        </style>
+    </head>
+      <body style="background: white;">
+        <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #0046bb ;">
+          <a class="navbar-brand" href="/home2" style="color: white;"><i class="fas fa-balance-scale" ></i>Stonks</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/home" style="color: white;">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" style="color: white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= name %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/profile">Profile</a>
+                  <a class="dropdown-item" href="/myorders">My Orders</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/history">Order History</a>
+                </div>
+              </li>
+              
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 10px; color: white;" type="submit">Search</button>
+            </form>
+              
+            <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+              
+              <button class="btn btn-outline-success my-2 my-sm-0" style="color: white;" type="submit">Logout</button>
+            </form>
+            
+          </div>
+        </nav>
+        <div id="tabel" style="align-content: center;">
+          
+            <table style="margin-top: 10px;" class="table table-hover">
+              <thead style="background: #888;">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">Region</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% var j=1; %>
+                <% obj.forEach(i => { %>
+                  
+                <tr>
+                  <th scope="row"><%= j %></th>
+                  <td><a href="/s/<%= i["1. symbol"] %>"><%= JSON.stringify(i["2. name"]) %></a></td>
+                  <td><%= JSON.stringify(i["1. symbol"]) %></td>
+                  <td><%= JSON.stringify(i["4. region"]) %></td>
+                </tr>
+                
+                <% j++}) %>  
+              </tbody>
+            </table>
+            </div>
+            
+    </body>
+</html>

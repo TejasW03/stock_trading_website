@@ -1,0 +1,117 @@
+<html>
+
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+	<style>
+	
+		body{
+			background-color : #097054;
+		}
+		#header{
+			text-align: center;
+			padding-top: 20px;
+			display : block;
+			
+		}
+		#login_form{
+			margin-top : 40px;
+			align-content: center;
+			margin-left: 700px;
+			display : block;
+			background-color : #9dad7f;
+			height: 300px;
+			width : 600px;
+			padding-left : 75px;
+			padding-top: 25px;
+			
+		}
+		
+		#email{
+			margin-top : 10px;
+			margin-bottom : 10px;
+			border : none;
+			background : #CDCDCD;
+			padding: 5px;
+			
+			height : 40px;
+			margin-left : 70px;
+			width : 300px;
+		}
+		#password{
+			margin-top : 10px;
+			margin-bottom : 10px;
+			border : none;
+			height : 40px;
+			background : #CDCDCD;
+			padding : 5px;
+			margin-left : 70px;
+			width : 300px;
+		}
+		
+		#login{
+			margin-top : 10px;
+			padding : 5px;
+			width : 250px;
+			height : 40px;
+			margin-left : 90px;
+			background-color : #5b8a72;;
+			cursor : pointer;
+			border : none;
+		}
+		
+		#new_acc{
+			
+			margin-left : 50px;
+			color : black; 
+		}
+		
+	
+	</style>
+	
+</head>
+
+<body>
+	<div id ="header">
+		<h1><i class="fas fa-balance-scale"></i>Stonks</h1>
+	</div>
+	<div id="login_form">
+		<form name="f1" action = "login" onsubmit = "return validation()" method = "POST">
+			<input type="text" placeholder="Enter Email...." id="email" name  = "user"><br>
+			<input type="password" placeholder="Enter Password...." id="password"  name  = "pass"><br>
+			<input type="submit" id="login" value="Login">
+		</form>
+		
+		<h4 id ="new_acc">Not Registered? <a href="Register.html">Create an account</a></h4>
+		
+	</div>
+	<script>  
+            function validation()  
+            {  
+                var id=document.f1.user.value;  
+                var ps=document.f1.pass.value;  
+                if(id.length=="" && ps.length=="") {  
+                    alert("User Name and Password fields are empty");  
+                    return false;  
+                }  
+                else  
+                {  
+                    if(id.length=="") {  
+                        alert("User Name is empty");  
+                        return false;  
+                    }   
+                    if (ps.length=="") {  
+                    alert("Password field is empty");  
+                    return false;  
+                    }  
+                }                             
+            }   
+        </script>  
+</body>
+
+</html>

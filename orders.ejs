@@ -1,0 +1,241 @@
+<html>
+    <head>
+        <title>
+            My Orders
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+      <style>
+
+body{
+  background-color: white;
+}
+
+ table { 
+            margin: 0 auto; 
+            font-size: large; 
+            border: 1px solid black;
+            width: 800px; 
+            
+        } 
+  
+        h1 { 
+            text-align: center; 
+            
+
+        } 
+  
+        td { 
+            
+            border: 1px solid black; 
+        } 
+  
+        th, 
+        td { 
+            font-weight: bold; 
+            border: 1px solid black; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+  
+        td { 
+            font-weight: lighter; 
+        } 
+
+        body {
+  font-family: 'lato', sans-serif;
+}
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:8px 30px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+        
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+
+  .li1 {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    background-color: #888;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 9px 9px 9px 9px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 40%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+  td{
+      border: solid white; border-collapse:collapse;
+      text-align: center;
+    }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+    .table-row{
+      
+    }
+    li {
+      float: left;
+      display: inline-block;
+
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+
+  }
+      </style>
+
+
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #0046bb ;">
+        <a class="navbar-brand" href="/home" style="color: white;"><i class="fas fa-balance-scale" ></i>Stonks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home" style="color: white;">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" style="color: white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= name %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/myorders">My Orders</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/history">Order History</a>
+              </div>
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 10px; color: white;" type="submit">Search</button>
+          </form>
+            
+          <form class="form-inline my-2 my-lg-0" method="POST" action="/logout">
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" style="color: white;" type="submit">Logout</button>
+          </form>
+          
+        </div>
+      </nav>
+      <h1 style="padding-top: 5px;">Holdings</h1>
+       <div class="container">
+            
+            <ul class="responsive-table">
+              <li class="table-header li1">
+                <div class="col col-1">Order No.</div>
+                <div class="col col-1">Symbol</div>
+                <div class="col col-1">Quantity</div>
+                <div class="col col-1">Status</div>
+                <div class="col col-1">complexity</div>
+                <div class="col col-1">type</div>
+                <div class="col col-1">stoploss</div>
+                <div class="col col-1">limit</div>
+              </li>
+              <% obj3.forEach(i => {%>
+              <li class="table-row li1">
+
+                <table style="border: solid white ">
+                 
+                    <tr style="border: solid white; border-collapse:collapse"> 
+                      <form action="/myorders/<%= i.stock_symbol %>/sell" method="post">
+                        <td ><%= i.order_number %></td>
+                        <td><a href="/s/<%= i.stock_symbol %>"><%= i.stock_symbol %></a></td>
+                        <td><%= i.quantity %></td>
+                        <td><%= i.status %></td>
+                        <td><%= i.complexity %></td>
+                        <td><%= i.type %></td>
+                        <td><%= i.stoploss %></td>
+                        <td><%= i.limit_ %></td>
+                        <td><input type="number" id="quantity" name="quantity" min="1" max="<%= i.quantity %>"></td>
+                        <td><button class="submit myButton"  name="no" value=<%= i.order_number %> id="buy1">SELL</button></td>
+                      </form>
+                    </tr>
+                    
+                </table>
+                </form>
+              </li>
+              <% }) %>
+
+            </ul>
+          </div>
+    </body>
+</html>

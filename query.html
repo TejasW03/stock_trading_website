@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>set rule</title>
+    </head>
+    <body>
+        <form method="POST" action="query">
+            <table>
+            <tr>
+                <td><label for="check">RuleID</label></td>
+                <td><input type="number" placeholder="Enter Rule id" id="quantity" name="id" required></td>
+            </tr>
+                
+            <tr>
+            <td><label for="check">Quantity</label></td>
+            <td><input type="number" placeholder="Enter Quantity...." id="quantity" name="quantity" required></td>
+            </tr>
+            <tr>
+            <td><label for="check">Order Complexcity</label></td>
+            <td><select name="complexity" id="select_option1" class="select_option" >
+                    <option value="simple">SIMPLE</option>
+                    <option value="CO">CO</option>
+                </select></td>
+            </tr>
+            <tr>
+            <td><label for="check">Order Type</label></td>
+            <td><select name="type" id="select_option2" class="select_option" >
+                    <option value="market">MARKET</option>
+                    <option value="limit">LIMIT</option>
+                    <option value="sl lmt">SL LMT</option>
+                    <option value="sl mkt">SL MKT</option>
+                </select></td>
+            </tr>
+            <tr>
+            <td><label for="check">Product</label></td>
+            <td><select id="select_option3" class="select_option" name="product">
+                    <option value="intraday">INTRADAY</option>
+                    <option value="delivery">DELIVERY</option>
+                </select></td>
+            </tr>
+            </table>
+            <input type="submit" id="submit" value="Submit" >
+        </form>
+       
+    </body>
+</html>

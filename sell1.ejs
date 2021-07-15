@@ -1,0 +1,38 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="/home/stocks/<%= st %>/buy" method="POST" >
+            <table>
+              <tr><td>quantity</td><td><input type="number" placeholder="Enter Quantity...." id="quantity" name="quantity" required></td></tr>
+              <tr>
+                <td><label for="check">Order Type</label></td>
+                <td><select id="select_option2" class="select_option" name="type">
+                    <option value="market">MARKET</option>
+                    <option value="limit">LIMIT</option>
+                    <option value="sl lmt">SL LMT</option>
+                    <option value="sl mkt">SL MKT</option>
+                  </select></td>
+                </tr>
+                <tr>
+                  <td><label for="check">Order Complexcity</label></td>
+                  <td><select id="select_option1" class="select_option" name="complexity">
+                      <option value="simple">SIMPLE</option>
+                      <option value="CO">CO</option>
+                    </select></td>
+                  </tr>
+                  <tr>
+
+
+                  </select></td></tr>
+                  <tr><td>stoploss</td><td><input type="number" placeholder="Enter Quantity...." id="stoploss" name="stoploss" required></td></tr>
+                  <tr><td>buy price</td><td><input type="number" placeholder="Enter Quantity...." id="limit" name="limit" required></td></tr>
+                  <tr><td><button type="submit" name="submit" value="<%= pr %>">BUY</button></td></tr>
+                  
+                  
+
+            </table>
+          </form>
+    </body>
+</html>

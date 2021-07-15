@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>Set RUle</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+            .modal-content {
+              background-color: #fefefe;
+              margin: auto;
+              border: 1px solid #888;
+              width: 80%;
+              padding-top: 0px; /* Location of the box */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              
+              overflow: auto; /* Enable scroll if needed */
+              
+              background-color: #9dad7f;
+              align-content: center;
+            }
+            
+            body{
+                background-color : #9dad7f;
+            }
+            table {
+              width: 100%;
+              align-content: center;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: center;
+              padding: 8px;
+              margin-top : 10px;
+                        margin-bottom : 10px;
+                        border : none;
+                        background : #CDCDCD;
+                        padding : 5px;
+                        height : 40px;
+            }
+            tr{
+                background : #CDCDCD;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #5b8a72 ;">
+            <a class="navbar-brand" href="/home2"><i class="fas fa-balance-scale"></i>Stonks</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/home2">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/stocks2">Stocks</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Rule
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/setrule">Set Rule</a>
+                    <a class="dropdown-item" href="/viewrules">View Rule</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/profile">Profile</a>
+                  </div>
+                </li>
+                
+              </ul>
+              
+                
+              <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+                
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+              </form>
+              
+            </div>
+          </nav>
+      
+
+        <div class="modal-content">
+            <form method="POST" action="setr">
+            <table class="table">
+                <tr>
+                    <td><label for="check">RuleID</label></td>
+                    <td><input type="Number" placeholder="Enter Rule id" id="id" name="id" required></td>
+                </tr>
+                <tr>
+                    <td><label for="check">Type</label></td>
+                    <td><select id="bstype" name="bstype">
+                            <option value="buy">BUY</option>
+                            <option value="sell">SELL</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="check">Enter Rule</label></td>
+                    <td><textarea name="code" rows="5" column="40"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Parameters</td>
+                    <td><ul>
+                        <li>Quantity</li>
+                        <li>Complexity - Simple/CO</li>
+                        <li>Type - market/limit/sl limit/sl market</li>
+                        <li>Product - intrday/delivery</li>
+                        <li>Set SELL/BUY to check rule while selling/buying</li>
+                        <li>Value - current stock price</li>
+                        <li>Operators - <,<=,>,>=,==,!=  </li>
+                        <li>Use && to join multiple conditions</li>
+                        <li>Example Rule- "quantity<=10 && complexity==simple && type==market && product == delivery "</li>
+                    </ul></td>
+                </tr>
+
+
+            </table>
+            <input type="submit" id="submit" value="Submit" >
+            </form>
+        </div>
+    </body>
+</html>

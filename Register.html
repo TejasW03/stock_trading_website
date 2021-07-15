@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<style>
+				#header{
+			text-align: center;
+			padding-top: 20px;
+			display : block;
+			
+		}
+		body{
+			background-image: linear-gradient(#5C6DAD, #1A213B);
+		}
+		#login_form{
+			margin : auto auto ;
+			padding : 10px;
+			display : block;
+			background-color : white;
+			width : 400px;
+			border-top-right-radius : 15px;
+			border-bottom-right-radius : 15px;
+			border-bottom-left-radius: 15px;
+			border-top-left-radius: 15px;
+
+		}
+		
+		#email{
+			margin : 10px auto;
+			border : none;
+			background : #CDCDCD;
+			padding : 5px;
+			height : 40px;
+			margin-left : 70px;
+			width : 250px;
+		}
+		#password{
+			margin : 10px auto;
+			border : none;
+			height : 40px;
+			background : #CDCDCD;
+			padding : 5px;
+			margin-left : 70px;
+			width : 250px;
+		}
+		
+		#name{
+			margin : 10px auto;
+			border : none;
+			height : 40px;
+			background : #CDCDCD;
+			padding : 5px;
+			margin-left : 70px;
+			width : 250px;
+		}
+		
+		#select_option{
+			margin : 10px auto;
+			border : none;
+			height : 40px;
+			background : #CDCDCD;
+			padding : 5px;
+			margin-left : 70px;
+			width : 250px;
+		}
+		
+		#login{
+			margin : 5px auto;
+			width : 250px;
+			height : 40px;
+			margin-left : 70px;
+			background-color : #0046bb;
+;
+			cursor : pointer;
+			border : none;
+		}
+		
+		#check{
+			
+			margin: 10px auto;
+			color : #959595; 
+		}
+		
+		#new_acc{
+			
+			margin-left : 75px;
+			color : black; 
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div id ="header">
+			<h1>Signup</h1>
+		</div>
+		<div id="login_form">
+		<form action="signup" method="post">
+			<input type="text" placeholder="Enter Name...." id="name" name="name" required><br>
+	
+			<input type="text" placeholder="Enter Email...." id="email" name="email" required><br>
+			<input type="password" placeholder="Enter Password...." id="password" name="pass" required><br>
+			
+			<input type="checkbox" id="check" value="accept_terms" required>
+			<label for="check"> I Agree to Terms And Condition</label><br><br>
+			
+			<input type="submit" id="login" value="SignUp">
+			
+			<h5 id ="new_acc">Having Account? <a href="login.html">Click To Login</a></h5>
+		</form>
+	</div>
+	</body>
+</html>

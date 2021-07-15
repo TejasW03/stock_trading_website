@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+  .arrow {
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+body{
+  background-color: #c7cfb7;
+}
+
+table { 
+            margin: 0 auto; 
+            font-size: large; 
+            border: 1px solid  black;
+            width: 800px; 
+            
+        } 
+  
+        h1 { 
+            text-align: center; 
+            
+            font-size: xx-large; 
+            font-family: 'Gill Sans', 'Gill Sans MT',  
+            ' Calibri', 'Trebuchet MS', 'sans-serif'; 
+        } 
+  
+        th { 
+            
+            border: 1px solid  black; 
+        } 
+  
+         
+        td { 
+            font-weight: bold; 
+            border: 1px solid  black; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+  
+        td { 
+            font-weight: lighter; 
+        } 
+ 
+</style>
+</head>
+<body>
+  
+   
+    <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #5b8a72 ;">
+        <a class="navbar-brand" href="/home2"><i class="fas fa-balance-scale"></i>Stonks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home2">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/stocks2">Stocks</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Rule
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/setrule">Set Rule</a>
+                <a class="dropdown-item" href="/viewrules">View Rule</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/profile">Profile</a>
+              </div>
+            </li>
+            
+          </ul>
+          
+            
+          <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+          </form>
+          
+        </div>
+      </nav>
+  
+<form action="/refresh" action="GET"><button >Refresh</button></form>
+
+
+<table class="table table-hover centerTable">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align: center;background-color: #9dad7f;">Name</th>
+      <th scope="col" style="text-align: center;background-color:#9dad7f ;">Volume</th>
+      <th scope="col" style="text-align: center;background-color: #9dad7f;">Price</th>
+    </tr>
+  </thead>
+  <% obj.forEach(i => {%>
+  <tbody>
+    <tr>
+      <th scope="row" style="text-align: center;"><a href="home/stocks2/<%= i.Symbol %>"><%= i.Name %></a></th>
+      <td style="text-align: center;"><%= i.Volume %></td>
+      <% if(i.Price > i.last_price){ %>
+        <td style="color: green;"><b><%= i.Price %></b><i id="arr" class="arrow up" ></i></td>
+      <% } else{ %>  
+        <td style="color: red;"><b><%= i.Price %></b><i id="arr" class="arrow down" ></i></td>
+     <% } %>
+      
+
+    </tr> 
+  </tbody>
+  <% }) %>
+</table>
+
+</body>
+</html>

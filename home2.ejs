@@ -1,0 +1,257 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  
+<head> 
+    <meta charset="UTF-8"> 
+    <title>GFG User Details</title> 
+    <!-- CSS FOR STYLING THE PAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style> 
+  .arrow {
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+
+.tb{
+  text-align: center;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
+
+
+body{
+	background-color : white;
+}
+.column1 {
+  float: left;
+  width: 20%;
+  border: 2px 2px black;
+}
+.column2{
+  float: left;
+  width: 77%;
+  border: 2px 2px black;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+    </style> 
+</head> 
+  
+<body> 
+    
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #0046bb ;">
+      <a class="navbar-brand" href="/home2" style="color: white;"><i class="fas fa-balance-scale" ></i>Stonks</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home" style="color: white;">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" style="color: white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/profile">Profile</a>
+              <a class="dropdown-item" href="/myorders">My Orders</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/history">Order History</a>
+            </div>
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right: 10px; color: white;" type="submit">Search</button>
+        </form>
+          
+        <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+          
+          <button class="btn btn-outline-success my-2 my-sm-0" style="color: white;" type="submit">Logout</button>
+        </form>
+        
+      </div>
+    </nav>
+
+<div class="row">
+  
+  <div class="column1" style="border-right: solid 1px black;  height: 800px;     overflow-y: auto;   overflow-x: hidden;" >
+    <table class="table">
+      <thead >
+        <th style="text-align: center;">Indices</th>
+      </thead>
+      <tbody>
+        <tr><th scope="row" style="text-align: center;"><a href="home">SENSEX</a></th></tr>
+      </tbody>
+    </table>
+    <table class="table" >
+      
+      <tbody>
+        
+        <th style="text-align: center;">Watchlist</th><td> <a style="text-align: right;" href="/refresh">Refresh</a></td>
+      <% obj.forEach(i => {%>
+      
+        <tr>
+          
+          <th scope="row" style="text-align: center;"><a href="s/<%= i.Symbol %>"><%= i.Name %></a></th>
+ 
+          <% if(i.Price > i.last_price){ %>
+            <td style="color: green;"><b><%= i.Price %></b><i id="arr" class="arrow up" ></i></td>
+          <% } else{ %>  
+            <td style="color: red;"><b><%= i.Price %></b><i id="arr" class="arrow down" ></i></td>
+         <% } %>
+          
+    
+        </tr> 
+        <% }) %>
+      </tbody>
+   
+    </table>
+  </div>
+  <div class="column2">
+    <% var j=1; %> 
+    <% arr.forEach(i =>{ %>
+      <div id="mydiv<%= j %>" data-test=<%= i %>></div>
+      <% j++ %>
+    <% })%>
+    
+    <% var j=1; %> 
+    <% dates.forEach(i =>{ %>
+      <div id="div<%= j %>" data-test=<%= i %>></div>
+      <% j++ %>
+    <% })%>
+    <h3 style="text-align: center;">BSE:Sensex</h3>
+    <div>
+ 
+      <p id="demo"></p>
+      <div>
+        <button id="butt1" class="btn " style="background-color: #888; color: white; margin-left: 20px;" onclick="updateChart(5)">5 Days</button>
+        <button id="butt2"  class="btn "  style="background-color: #888; color: white; " onclick="updateChart(100)">100 days</button>
+        <canvas id="myChart" width="100%" ></canvas>
+      </div>
+  
+      
+    </div>
+  </div>
+</div>
+
+  
+
+</div>
+</div>
+
+
+<script>
+
+  values1 = [];
+  dates1 = [];
+  values2 = [];
+  dates2 = [];
+
+
+
+
+for(i=5;i>0;i--)
+  {
+    var str1 = 'mydiv'+ i;
+    var str2 = 'div'+ i;
+    var v = document.getElementById(str1).dataset.test;
+    var d = document.getElementById(str2).dataset.test;
+    values1.push(v);
+    dates1.push(d);
+  }
+for(i=100;i>0;i--)
+  {
+    var str1 = 'mydiv'+ i;
+    var str2 = 'div'+ i;
+    var v = document.getElementById(str1).dataset.test;
+    var d = document.getElementById(str2).dataset.test;
+    values2.push(v);
+    dates2.push(d);
+  }
+
+
+
+var ctx =  document.getElementById('myChart');
+var chart = new Chart(ctx,{
+  type: 'line',
+  data: {
+    labels: dates2,
+    datasets: [{
+      label: 'Past Performance ' ,
+      backgroundColor: 'white',
+      borderColor: 'black',
+      data: values2,
+    }]
+  }
+})
+
+
+
+function updateChart(n){
+  if(n==100){
+    chart.data.datasets[0].data = values2;
+    chart.data.labels = dates2; 
+  chart.update();
+  }
+  else
+ { chart.data.datasets[0].data = values1;
+  chart.data.labels = dates1; 
+  chart.update();}
+}
+  </script>
+
+    
+</body> 
+  
+</html> 

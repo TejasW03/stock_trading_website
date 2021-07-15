@@ -1,0 +1,139 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+<style>
+.div{
+	margin-left : 100px;
+	}
+
+body{
+background-image: linear-gradient(#5C6DAD, #1A213B);
+}
+.login_div{
+margin: auto;
+
+  width: 50%;
+  height :  60%;
+  background-color : white;
+
+  padding: 10px;
+  text-align : center;
+  
+  position: absolute;
+  top: 50%;
+  left : 20%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#boxes {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      div {
+        float: left;
+        height: 470px;
+        width: 23%;
+        padding: 0 10px;
+      }
+      #left {
+      
+		text-align : center;
+		float : left;
+		width : 475px;
+		margin-left : 36.2%;
+		border-top-right-radius : 15px;
+		border-bottom-right-radius : 15px;
+		border-left : 3px solid gray;
+      }
+      #right {
+        width: 35%;
+		margin-left: 0%;
+		border-top-left-radius : 15px;
+		border-bottom-left-radius : 15px;
+		}
+		h2 {
+        color: #000000;
+        text-align: center;
+      }
+	  .img{
+	  height : 100%;
+	  margin-right : 100px;
+	  }
+	  .mail{
+	  width : 300px;
+	  margin-top : 70px;
+	  padding : 10px;
+	  border-radius: 4px;
+	  border : 1px solid gray;
+	  height : 45px;
+	  }
+	  .pass{
+	  padding : 10px;
+	   width : 300px;
+	  height : 45px;
+	  border : 1px solid gray;
+	  border-radius: 4px;
+	  }
+	  .but
+	  {
+	  padding : 10px;
+	   width : 300px;
+	  height : 45px;
+	  background-color : #0046bb;
+	  color: #FFF;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    cursor: pointer;
+    border-radius: 4px;
+	  border : none;
+	  
+	  }
+	  .hr_line{
+	  margin-top : 30px;
+	  }
+	  .signinbox {
+	  margin-top : 30px;
+    display: flex;
+	margin-left : 80px;
+}
+	.sign{
+	text-decoration : none;
+	color : #0046bb
+	}
+	.arrow-right{
+	cursor : pointer;
+	}
+	
+</style>
+</head>
+<body>
+<div class="div">
+<main class="login" id="boxes">
+
+<div class="login_div" id="left">
+<form action="/login" method="POST" >
+<input class="mail" name="mail" type="text" value="tjs@gmail.com" placeholder="Email Address" /> <br><br>
+<input class="pass" name="pass" type="password" value="admin" placeholder="Password"/> <br><br>
+<button class="but">Submit</button>
+</form>
+<hr class="hr_line">
+<section class="signinbox">
+<p>                      
+    <a href="register" class="sign">Sign in</a>
+    to continue your existing application
+</p>&nbsp;&nbsp;
+<img class="arrow-right" src="https://upstox.com/open-demat-account/assets/images/arrow-right.svg" alt="arrow-right">
+</section>
+</div>
+
+<div class="login_div" id="right">
+<h1 style="margin: 200px 200px; font-size: 50px;"><i class="fas fa-chart-area"></i>upStonks</h1>
+</div>
+
+</main>
+</div>
+</body>
+</html>

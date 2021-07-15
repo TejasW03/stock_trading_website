@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <title>
+            <%=  %>
+        </title> 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+      body{
+    background-color: #c7cfb7;
+      }
+      .column {
+  
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style> 
+    </head>
+
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #5b8a72 ;">
+        <a class="navbar-brand" href="/home">Stonks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/stocks">Stocks</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/myorders">My Orders</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/brokers">Brokers</a>
+              </div>
+            </li>
+            
+          </ul>
+          
+            
+          <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+          </form>
+          
+        </div>
+      </nav>
+          <div class="row">
+            <div class="column" style="text-align: left;">
+              <h1><% var lr = obj['Meta Data']['3. Last Refreshed']; %></h1>
+          <h2><%= obj['Meta Data']['2. Symbol'] %></h1>
+          <h2><%= obj['Time Series (Daily)'][lr]["4. close"] %></h2>
+          <h3><%= lr %></h3>
+
+
+          <form name="myform">
+            <table>
+            <tr>
+            <td>
+            <select name="one" onchange="if (this.value=='other'){this.form['other'].style.visibility='visible'}else {this.form['other'].style.visibility='hidden'};">
+            <option value="" selected="selected">Select...</option>
+            <option value="1">1</option>
+            <option value="2">3</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="other">Other</option>
+            </select>
+            <input type="textbox" name="other" style="visibility:hidden;"/>
+            </td>
+            </tr>
+            </table>
+            </form>
+            </div>
+            <div class="column" style="text-align: right;" >
+              <h4>100 days highest :<%= high %></h4>
+              <h4>High:<%= obj['Time Series (Daily)'][lr]["2. high"] %></h4>
+              <h4>Low:<%= obj['Time Series (Daily)'][lr]["3. low"] %></h4>
+              <h4>Volume:<%= obj['Time Series (Daily)'][lr]["5. volume"] %></h4>
+    
+              <% if(!obj2[0]){ %>
+                <form action="/home/stocks/<%= obj['Meta Data']['2. Symbol'] %>/addwish" method="POST">
+                <button name="add" value="<%= obj['Meta Data']['2. Symbol']%>" style="color: green;">add to watchlist</button>
+                </form>
+              <% } else{ %>  
+                <form action="/home/stocks/<%= obj['Meta Data']['2. Symbol'] %>/removewish" method="POST">
+                  <button name="add" value="<%= obj['Meta Data']['2. Symbol']%>" style="color: red;">remove from watchlist</button>
+                  </form>
+             <% } %>
+             <form action="/home/stocks/<%= obj['Meta Data']['2. Symbol'] %>/buy1" method="POST">
+              <button name="add" value="<%= obj['Time Series (Daily)'][lr]["4. close"]%>">BUY</button>
+              
+            </form>
+            </div>
+          </div>
+          
+
+
+
+
+          
+              
+
+
+            
+
+          
+
+          <% var j=1; %> 
+          <% value.forEach(i =>{ %>
+            <div id="mydiv<%= j %>" data-test=<%= i %>></div>
+            <% j++ %>
+          <% })%>
+
+          <% var j=1; %> 
+          <% dates.forEach(i =>{ %>
+            <div id="div<%= j %>" data-test=<%= i %>></div>
+            <% j++ %>
+          <% })%>
+
+          <div>
+            <button id="butt1" data-test="7">7 days</button>
+            <button id="butt2" data-test="100">100 days</button>
+            <canvas id="myChart" ></canvas>
+          </div>
+          <script>
+
+            bt=7;
+var bt = document.getElementById("butt1").dataset.test;
+var bt = document.getElementById("butt2").dataset.test;
+            var values = []
+            var dates = []
+            for(i=100;i>0;i--)
+            {
+              var str1 = 'mydiv'+ i;
+              var str2 = 'div'+ i;
+              var v = document.getElementById(str1).dataset.test;
+              var d = document.getElementById(str2).dataset.test;
+              values.push(v);
+              dates.push(d);
+            }
+            
+
+            
+            const labels = dates;
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'Past Performance',
+                backgroundColor: '#5b8a72',
+                borderColor: '#9dad7f',
+                data: values,
+              }]
+            };
+            
+            const config = {
+              type: 'line',
+              data,
+              options: {}
+            };
+            
+            var myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            </script>
+        
+
+          
+
+
+           
+     </body>   
+</html>

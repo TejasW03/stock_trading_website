@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>Stonks</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+        <style>
+          
+  .arrow {
+  border: solid;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+
+.tb{
+  text-align: center;
+}
+
+table {
+  max-width: 100%;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+th {
+  background-color: #555;
+  color: #fff;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5em 1em;
+}
+
+        </style>
+    </head>
+    <body style="background-color: #12232E;">
+        <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #4DA8DA ;">
+            <a class="navbar-brand" href="/home"><i class="fas fa-balance-scale"></i>Stonks</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/stocks">Watchlist</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Watchlist
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/stocks">Favourties</a>
+                    <a class="dropdown-item" href="/myorders">Holdings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/history">Order history</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/profile">Profile</a>
+                    <a class="dropdown-item" href="/myorders">Holdings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/history">Order history</a>
+                  </div>
+                </li>
+                
+              </ul>
+              <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+                
+              <form class="form-inline my-2 my-lg-0" method="POST" action="logout">
+                
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+              </form>
+              
+            </div>
+          </nav>
+        
+          <div class="jumbotron " style="background-color:  #007CC7;" >
+            <div class="container">
+              <h1 class="display-4">Hello, <%= name%></h1>
+            </div>
+          </div>
+
+        <div class="tb">
+          <h2>Hot Stocks</h2>
+          <table  class="table">
+            <tr style="background-color: #9dad7f;">
+              <td>Symbol</th>
+              <td>Volume</th>
+               <td>Price</td> 
+            </tr>
+            <% obj.forEach(i => {%>
+            <tr>
+              <form action="home/stocks/<%= i.Symbol %>" method="post">
+              <td><a href="home/stocks/<%= i.Symbol %>"><%= i.Name %></a></td>
+            
+              
+              <% if(i.Price > i.last_price){ %>
+                <td style="color: green;"><b><%= i.Price %></b><i id="arr" class="arrow up" ></i></td>
+              <% } else{ %>  
+                <td style="color: red;"><b><%= i.Price %></b><i id="arr" class="arrow down" ></i></td>
+             <% } %>
+              </form>
+            </tr>
+            <% }) %>
+          
+          </table>
+        </div>
+        <br>
+        <div class="tb">
+          <h2 class="user">My Orders (top 3)</h2>
+        <table  class="table">
+          <tr style="background-color: #9dad7f;">
+            <th>Order No.</th>
+            <th>Symbol</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Value</th>
+            <th>Complexity</th>
+            <th>Type</th>
+            <th>Buy Date</th>
+            <th>Broker</th>
+          </tr>
+          <% obj2.forEach(i => {%>
+          <tr>
+            <form action="/myorders/<%= i.order_number %>" method="post">
+              <td><%= i.order_number %></td>
+              <td><%= i.stock_symbol %></td>
+              <td><%= i.quantity %></td>
+              <td><%= i.stock_price %></td>
+              <td><%= i.value %></td>
+              <td><%= i.complexity %></td>
+              <td><%= i.type %></td>
+              <td><%= i.bdate %></td>
+              <td><%= i.broker %></td>
+              
+            </form>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
+    </body>
+</html>

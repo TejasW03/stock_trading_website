@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <title>set rule</title>
+        <style>
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            
+            body{
+                background-color : #5AB85A;
+            }
+            table {
+              width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: center;
+              padding: 8px;
+              margin-top : 10px;
+                        margin-bottom : 10px;
+                        border : none;
+                        background : #CDCDCD;
+                        padding : 5px;
+                        height : 40px;
+            }
+            tr{
+                background : #CDCDCD;
+            }
+            
+            
+            
+            #myModal1 {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 1; /* Sit on top */
+              padding-top: 100px; /* Location of the box */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            
+            .modal {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 1; /* Sit on top */
+              padding-top: 100px; /* Location of the box */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            
+            /* Modal Content */
+            .modal-content {
+              background-color: #fefefe;
+              margin: auto;
+              padding: 20px;
+              border: 1px solid #888;
+              width: 80%;
+            }
+            
+            /* The Close Button */
+            .close {
+              color: #aaaaaa;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            
+            .close:hover,
+            .close:focus {
+              color: #000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            
+            
+            #check{
+                        
+                        margin-left : 75px;
+                        color : #959595; 
+                    }
+            
+            #submit{
+                        
+                        margin-top : 10px;
+                        padding : 5px;
+                        width : 250px;
+                        height : 40px;
+                        background-color : #5AB85A;
+                        cursor : pointer;
+                        border : none;
+                    }
+                    
+            #select_option{
+                        margin-top : 10px;
+                        margin-bottom : 10px;
+                        border : none;
+                        height : 40px;
+                        background : #CDCDCD;
+                        padding : 5px;
+                        margin-left : 70px;
+                        width : 250px;
+                    }
+            
+            #quantity{
+                        margin-top : 10px;
+                        margin-bottom : 10px;
+                        border : none;
+                        background : #CDCDCD;
+                        padding : 5px;
+                        height : 40px;
+                        margin-left : 70px;
+                        width : 250px;
+                    }
+            .select_option{
+                        margin-top : 10px;
+                        margin-bottom : 10px;
+                        border : none;
+                        height : 40px;
+                        background : #CDCDCD;
+                        padding : 5px;
+                        margin-left : 70px;
+                        width : 250px;
+                    }
+                    
+            .button
+            {
+                        height : 40px;
+                        background : #CDCDCD;
+                        border : none;
+                        width : 100px;
+            }
+            .button:hover
+            {
+                background : #999999;
+                cursor : pointer;
+            }
+            
+            </style>
+    </head>
+    <body>
+        <form method="POST" action="setrule">
+            <table>
+            <tr>
+                <td><label for="check">RuleID</label></td>
+                <td><input type="text" placeholder="Enter Rule id" id="quantity" name="id" required></td>
+            </tr>
+                
+            <tr>
+            <td><label for="check">Quantity</label></td>
+            <td><input type="number" placeholder="Enter Quantity...." id="quantity" name="quantity" required></td>
+            </tr>
+            <tr>
+            <td><label for="check">Order Complexcity</label></td>
+            <td><select name="complexity" id="select_option1" class="select_option" >
+                    <option value="simple">SIMPLE</option>
+                    <option value="CO">CO</option>
+                </select></td>
+            </tr>
+            <tr>
+            <td><label for="check">Order Type</label></td>
+            <td><select name="type" id="select_option2" class="select_option" >
+                    <option value="market">MARKET</option>
+                    <option value="limit">LIMIT</option>
+                    <option value="sl lmt">SL LMT</option>
+                    <option value="sl mkt">SL MKT</option>
+                </select></td>
+            </tr>
+            <tr>
+            <td><label for="check">Product</label></td>
+            <td><select id="select_option3" class="select_option" name="product">
+                    <option value="intraday">INTRADAY</option>
+                    <option value="delivery">DELIVERY</option>
+                </select></td>
+            </tr>
+            </table>
+            
+            <input type="submit" id="submit" value="Submit" onclick="myFunction()">
+
+        </form>
+    </body>
+</html>
